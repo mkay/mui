@@ -6,20 +6,20 @@ a responsive Munin 2.x UI template based on [Bootstrap 4](http://getbootstrap.co
 - backup the ``templates`` and ``static`` directories in your [Munin](http://munin-monitoring.org/) installation.
 - replace them with ``templates`` and ``static`` from this repo (``/munin/..``).
 - wait for the next munin-cron cycle.
-- browse to your Munin frontend and expect to see sometjhing like this:
+- browse to your Munin frontend and expect to see something like this:
 
 ![](screenshot.png)
 
 
 ### Credits
 
-- Munstrap  
+- Munstrap
 https://github.com/jonnymccullagh/munstrap/
 
-- Bootstrap 4.x  
+- Bootstrap 4.x
 http://getbootstrap.com/
 
-- Munin 
+- Munin
 http://munin-monitoring.org/
 
 
