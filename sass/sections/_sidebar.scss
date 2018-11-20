@@ -1,3 +1,16 @@
+aside .card-group{
+    background-color: rgba(0,0,0,.1);
+    border: none;
+}
+
+aside .card-header{
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: .25rem 1.25rem;
+    width: 100%;
+}
+
 aside .card-body{
 	padding: 15px;
 }
@@ -16,11 +29,6 @@ aside .heading-group a{
 aside .heading-group .fas{
     font-size: 1rem;
     margin-right: .25rem;
-}
-
-aside .card-header{
-    padding: .25rem 1.25rem;
-    width: 100%;
 }
 
 aside .btn.btn-host{
