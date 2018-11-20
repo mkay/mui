@@ -1,0 +1,49 @@
+@media (min-width: 576px){
+    #zoom .modal-dialog {
+        max-width: 900px;
+        margin: 1.75rem auto;
+    }
+}
+
+#zoom .modal-header,
+#zoom .modal-body,
+#zoom .modal-footer{
+    background-color: #efefef;
+}
+
+#hint-start .check,
+#hint-stop .check{
+    display: none;
+}
+
+#hint-start.done .check,
+#hint-stop.done .check{
+    color: #ccc;
+    display: inline-block;
+}
+
+#hint-start.done,
+#hint-stop.done{
+    color: #ccc !important;
+}
+
+#zoom-do:focus,
+#reset-do:focus{
+    box-shadow: none;
+}
+
+.zoom-canvas #img-overlay{
+    background-color: rgba(0,0,0,.2);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.zoom-canvas{
+    overflow: hidden;
+    position: relative;
+}
+
+.zoom-canvas #img-overlay.hidden{
+    display: none;
+}

@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+    <a class="navbar-brand mr-auto mr-sm-3" href="<TMPL_VAR NAME="R_PATH">"><img class="logo" src="<TMPL_VAR NAME="R_PATH">/static/img/logo.svg" alt="Munin" class="img-fluid"></a>
+    <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse offcanvas-collapse" id="navigation">
+        <ul class="navbar-nav navbar-main mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown-groups" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-server "></i> Groups</a>
+                <div class="dropdown-menu dropdown-groups" aria-labelledby="dropdown-groups">
+                    <TMPL_LOOP NAME="ROOTGROUPS">
+                    <a class="dropdown-item" href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URL">"><TMPL_VAR NAME="NAME"></a>
+                    </TMPL_LOOP>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown-hosts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="far fa-fw fa-bookmark"></i> Hosts</a>
+                <div class="dropdown-menu dropdown-hosts" aria-labelledby="dropdown-hosts">
+                    <TMPL_LOOP NAME="ROOTGROUPS">
+                    <TMPL_LOOP NAME="GROUPS">
+                    <TMPL_IF NAME="NCATEGORIES">
+                        <a class="dropdown-item" href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URL">"><TMPL_VAR ESCAPE="HTML" NAME="NAME"></a>
+                    </TMPL_IF>
+                    </TMPL_LOOP>
+                    </TMPL_LOOP>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown-categories" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-ellipsis-v"></i> Categories</a>
+                <div class="dropdown-menu dropdown-categories" aria-labelledby="dropdown-categories">
+                    <TMPL_LOOP NAME="GLOBALCATS">
+                    <div class="dropdown-item">
+                        <span class="category"><a href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URLDAY">"><TMPL_VAR NAME="NAME"></a></span> 
+                        <span class="values float-right">
+                            <a class="value" href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URLDAY">"><span class="badge badge-light">d</span></a>
+                            <a class="value" href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URLWEEK">"><span class="badge badge-light">w</span></a>
+                            <a class="value" href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URLMONTH">"><span class="badge badge-light">m</span></a>
+                            <a class="value last" href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URLYEAR">"><span class="badge badge-light">y</span></a>
+                        </span>
+                    </div>
+                    </TMPL_LOOP>
+                </div>
+            </li>
+        </ul>
+        <ul class="navbar-nav navbar-right d-md-none d-lg-block">
+            <li class="timestamp"><i class="fas fa-fw fa-sync-alt"></i> Last update: <TMPL_VAR NAME="TIMESTAMP"></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="nav-scroller bg-white shadow-sm">
+    <nav class="nav nav-underline">
+        <div class="label d-none d-sm-block" href="#"><strong>Problems</strong></div>
+        
+        <a class="nav-link<TMPL_IF NAME="NCRITICAL"> problem-critical</TMPL_IF>" href="<TMPL_VAR NAME="R_PATH">/problems.html#critical">
+          <TMPL_IF NAME="NCRITICAL"><i class="fas fa-exclamation-triangle"></i></TMPL_IF> Critical
+          <span class="badge badge-pill bg-light align-text-bottom text-danger"><TMPL_VAR NAME="NCRITICAL"></span>
+        </a>
+        <a class="nav-link<TMPL_IF NAME="NWARNING"> problem-warning</TMPL_IF>" href="<TMPL_VAR NAME="R_PATH">/problems.html#warnings">
+          <TMPL_IF NAME="NWARNING"><i class="fas fa-bell"></i></TMPL_IF> Warning
+          <span class="badge badge-pill bg-light align-text-bottom text-warning"><TMPL_VAR NAME="NWARNING"></span>
+        </a>
+        <a class="nav-link<TMPL_IF NAME="NUNKNOWN"> problem-unknown</TMPL_IF>" href="<TMPL_VAR NAME="R_PATH">/problems.html#unknowns">
+          <TMPL_IF NAME="NUNKNOWN"><i class="fas fa-question-circle"></i></TMPL_IF> Unknown
+          <span class="badge badge-pill bg-light align-text-bottom text-info"><TMPL_VAR NAME="NUNKNOWN"></span>
+        </a>
+            </nav>
+</div>
+

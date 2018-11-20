@@ -1,0 +1,32 @@
+                    <TMPL_LOOP NAME="ROOTGROUPS">
+                    <div class="container-group">
+                        <h3 class="heading-group"><a href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URL">"><i class="fas fa-fw fa-server"></i> <TMPL_VAR ESCAPE="HTML" NAME="NAME"></a></h3>
+                        <div class="accordion" id="accordion">
+                        <TMPL_LOOP NAME="GROUPS">
+                            <TMPL_IF NAME="NCATEGORIES">
+                            <div class="card card-group bg-dark text-light">
+                                <div class="card-header" id="heading_<TMPL_VAR NAME="__counter__">">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-host btn-link" type="button" data-toggle="collapse" data-target="#collapse_<TMPL_VAR NAME="__counter__">" aria-expanded="true" aria-controls="collapse_<TMPL_VAR NAME="NAME">">
+                                            <i class="far fa-fw fa-bookmark<TMPL_IF NAME="STATE_WARNING"> text-warning</TMPL_IF><TMPL_IF NAME="STATE_CRITICAL"> text-danger</TMPL_IF>"></i> <TMPL_VAR ESCAPE="HTML" NAME="NAME">
+                                        </button> 
+                                        <a class="link-host pull-right<TMPL_IF NAME="STATE_WARNING"> text-warning</TMPL_IF><TMPL_IF NAME="STATE_CRITICAL"> text-danger</TMPL_IF>" href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URL">"><i class="fas fa-fw fa-link"></i></a>
+                                    </h5>
+                                </div>
+                                <div id="collapse_<TMPL_VAR NAME="__counter__">" class="collapse" aria-labelledby="heading_<TMPL_VAR NAME="__counter__">" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <ul class="sidebar-categories">
+                                            <TMPL_LOOP NAME="CATEGORIES">
+                                            <li>
+                                                <a class="<TMPL_IF NAME="STATE_WARNING"> text-warning</TMPL_IF><TMPL_IF NAME="STATE_CRITICAL"> text-danger</TMPL_IF>" href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URL">"><TMPL_VAR NAME="NAME"></a>
+                                            </li> 
+                                            </TMPL_LOOP>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            </TMPL_IF>
+                        </TMPL_LOOP>
+                        </div>
+                    </div>
+                    </TMPL_LOOP>

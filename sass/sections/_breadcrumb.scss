@@ -1,0 +1,12 @@
+.top-path > span,
+.top-path > a{
+    font-size: .8rem;
+}
+
+.top-path > a:not(:last-child):after{
+    color: #fff;
+    content: "\f054";
+    font-family: 'FontAwesome';
+    margin-left: .25rem;
+}
+

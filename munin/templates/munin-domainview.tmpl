@@ -1,0 +1,104 @@
+<TMPL_INCLUDE NAME="partial/head.tmpl">
+    <body class="overview">
+        <TMPL_INCLUDE NAME="partial/navigation.tmpl">
+        <main class="container-fluid">
+        	    <div class="row h-100">
+        	        <aside class="d-none d-md-block col-md-5 col-lg-4 col-xl-3 bg-dark text-light">
+        	            <TMPL_INCLUDE NAME="partial/sidebar.tmpl">
+        	        </aside>
+        	        <article class="col-md-7 col-lg-8 col-xl-9 col-content">
+
+                    <span class="top-path">
+                        <span>Hosts:</span> 
+                        <TMPL_LOOP NAME="GROUPS">
+                        <a class="scroll" href="#node<TMPL_VAR NAME="__counter__">"><TMPL_VAR ESCAPE="HTML" NAME="NAME"></a>
+                        </TMPL_LOOP>
+                    </span>
+
+                    <TMPL_LOOP NAME="GROUPS">
+                    <div id="node<TMPL_VAR NAME="__counter__">">
+                        <div class="mb-4">
+
+                            <h2 class="node-heading mb-3"><TMPL_VAR ESCAPE="HTML" NAME="NAME"></h2>
+
+                            <div class="container-fluid">
+                                <div class="row">
+                                    
+                                    <!-- In each group there are N categories -->
+                                    <TMPL_IF NAME="NCATEGORIES">
+                                    <TMPL_LOOP NAME="CATEGORIES">
+                                    <div class="view-node mb-3 col-md-12 col-lg-6 shadow-sm">
+                                        <div>
+                                            <h5 class="mt-0 mb-1"><a href="<TMPL_VAR NAME="URLX">"><TMPL_VAR ESCAPE="HTML" NAME="NAME"></a></h5>
+
+                                            <ul class="list-inline list-small my-0">
+                                                <!-- And in each categroy there are M services -->
+                                                <TMPL_LOOP NAME="SERVICES">
+                                                <li class="list-inline-item service"><a <TMPL_IF NAME="STATE_WARNING">class="warn"</TMPL_IF> <TMPL_IF NAME="STATE_CRITICAL">class="crit"</TMPL_IF> href="<TMPL_VAR NAME="URLX">"><TMPL_VAR ESCAPE="HTML" NAME="NAME"></a></li>
+                                                </TMPL_LOOP><!-- SERVICES -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    </TMPL_LOOP><!--CATEGORIES -->
+                                    </TMPL_IF><!-- NCATEGORIES -->
+                                    
+                                    
+                                    <TMPL_IF NAME="NGROUPS">
+                                    <!-- GROUPS Listing level 2 -->
+                                    <TMPL_LOOP NAME="GROUPS">
+                                    <div class="view-node mb-3 col-md-12 col-lg-6 shadow-sm">
+                                        <div>
+                                            <h5 class="mt-0 mb-1"><a href="<TMPL_VAR NAME="URLX">"><TMPL_VAR ESCAPE="HTML" NAME="NAME"></a></h5>
+                                            
+                                            <ul class="list-inline list-small my-0">
+                                                <TMPL_IF NAME="NCATEGORIES">
+                                                <TMPL_LOOP NAME="CATEGORIES">
+                                                <li class="list-inline-item host"><a href="<TMPL_VAR NAME="URLX">"><TMPL_VAR ESCAPE="HTML" NAME="NAME"></a></li>
+            
+                                                <ul>
+                                                <TMPL_LOOP NAME="SERVICES">
+                                                <li class=""><a <TMPL_IF NAME="STATE_WARNING">class="warn"</TMPL_IF> <TMPL_IF NAME="STATE_CRITICAL">class="crit"</TMPL_IF> href="<TMPL_VAR NAME="URLX">"><TMPL_VAR ESCAPE="HTML" NAME="NAME"></a></li>
+                                                </TMPL_LOOP>
+                                                </ul>
+                                                </TMPL_LOOP>
+                                                </TMPL_IF>
+                                        
+                                                <ul>
+                                                    <TMPL_IF NAME="NGROUPS"><!-- NGROUPS level 3 -->
+                                                    <TMPL_LOOP NAME="GROUPS"><!-- GROUPS Listing level 3 -->
+                                                    <li class="list-inline-item domain"><a href="<TMPL_VAR NAME="URLX">"><TMPL_VAR ESCAPE="HTML" NAME="NAME"></a></li>
+                                                    </ul>
+                                                    <!-- In each group N categories and so on -->
+                                                    <TMPL_IF NAME="NCATEGORIES"><TMPL_LOOP NAME="CATEGORIES">
+                                                    <li class="list-inline-item host"><a href="<TMPL_VAR NAME="URLX">"><TMPL_VAR ESCAPE="HTML" NAME="NAME"></a></li>
+                                                    
+                                                    <!-- And in each catrgory there are services -->
+        
+                                                    <TMPL_LOOP NAME="SERVICES">
+                                                    <li class="list-inline-item service"><a <TMPL_IF NAME="STATE_WARNING">class="warn"</TMPL_IF> <TMPL_IF NAME="STATE_CRITICAL">class="crit"</TMPL_IF> href="<TMPL_VAR NAME="URLX">"><TMPL_VAR ESCAPE="HTML" NAME="NAME"></a></li>
+                                                    </TMPL_LOOP><!-- END SERVICES -->
+        
+                                                    </TMPL_LOOP><!-- END CATEGORIES --></TMPL_IF>
+                                                    <TMPL_IF NAME="NGROUPS">
+                                                    </TMPL_IF>
+                
+                                                    </TMPL_LOOP><!-- END GROUPS Listing level 3 -->
+                                                    </TMPL_IF><!-- END NGROUPS level 3 -->
+                                                </ul>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    </TMPL_LOOP><!-- END GROUPS Listing level 2 -->
+                                    </TMPL_IF><!-- END NGROUPS level 2 -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </TMPL_LOOP><!--END GROUPS Listing level 1 -->
+
+        	        </article>
+	        </div>
+        </main>
+        <TMPL_INCLUDE NAME="partial/footer.tmpl">
+</body>
+</html>

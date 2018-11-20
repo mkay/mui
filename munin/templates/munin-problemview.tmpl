@@ -1,0 +1,110 @@
+<TMPL_INCLUDE NAME="partial/head.tmpl">
+    <body>
+        <TMPL_INCLUDE NAME="partial/navigation.tmpl">
+        <main class="container-fluid">
+        	    <div class="row h-100">
+        	        <aside class="d-none d-md-block col-md-5 col-lg-4 col-xl-3 bg-dark text-light">
+        	            <TMPL_INCLUDE NAME="partial/sidebar.tmpl">
+        	        </aside>
+        	        <article class="col-md-7 col-lg-8 col-xl-9 col-content">
+
+                    <h2 class="node-heading mb-3">Problems</h2>
+
+                    <div class="problem" id="critical">
+                        <h5 class="mt-0 mb-1">Critical</h5>
+                        <TMPL_LOOP NAME="CRITICAL">
+                        		<div class="node">
+                        			<a class="nodetitle" href="<TMPL_VAR NAME="NODEURL">"><TMPL_VAR ESCAPE="HTML" NAME="NODENAME"></a> 
+
+                                <TMPL_IF NAME="URL"><a href="<TMPL_VAR NAME="URL">"></TMPL_IF>
+                        			<TMPL_VAR ESCAPE="HTML" NAME="LABEL">
+                        			<TMPL_IF NAME="URL"></a></TMPL_IF>
+
+                        			<a href="<TMPL_VAR NAME="URL">">
+                                    <img class="image-fluid" src="<TMPL_VAR NAME="CIMGDAY">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">" />
+                        			</a>
+                        		</div>
+    
+                        		<div class="node">
+                        			<a class="nodetitle" href="<TMPL_VAR NAME="NODEURL">"><TMPL_VAR ESCAPE="HTML" NAME="NODENAME"></a> 
+                        			
+                        			<TMPL_IF NAME="URL"><a href="<TMPL_VAR NAME="URLX">"></TMPL_IF>
+                                <TMPL_VAR ESCAPE="HTML" NAME="LABEL">
+                        			<TMPL_IF NAME="URL"></a></TMPL_IF>
+                        			
+                        			<a href="<TMPL_VAR NAME="URL">">
+                                    <img class="image-fluid" src="<TMPL_VAR NAME="CIMGWEEK">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">" />
+                        			</a>
+                        		</div>
+                        </TMPL_LOOP>
+                    </div>
+
+
+                    <div class="problem" id="warning">
+                        <h5 class="mt-0 mb-1">Warning</h5>
+                        <TMPL_LOOP NAME="WARNING">
+                        		<div class="node">
+                        			<a class="nodetitle" href="<TMPL_VAR NAME="NODEURL">"><TMPL_VAR ESCAPE="HTML" NAME="NODENAME"></a> 
+
+                        			<TMPL_IF NAME="URL"><a href="<TMPL_VAR NAME="URL">"></TMPL_IF>
+                        			<TMPL_VAR ESCAPE="HTML" NAME="LABEL">
+                        			<TMPL_IF NAME="URL"></a></TMPL_IF>
+
+                        			<a href="<TMPL_VAR NAME="URL">">
+                                    <img class="image-fluid" src="<TMPL_VAR NAME="CIMGDAY">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">" />
+                        			</a>
+                        		</div>
+                        		</td>
+                        		<td>
+                        		<div class="node">
+                        			<a class="nodetitle" href="<TMPL_VAR NAME="NODEURL">"><TMPL_VAR ESCAPE="HTML" NAME="NODENAME"></a> 
+
+                        			<TMPL_IF NAME="URL"><a href="<TMPL_VAR NAME="URLX">"></TMPL_IF>
+                        			<TMPL_VAR ESCAPE="HTML" NAME="LABEL">
+                        			<TMPL_IF NAME="URL"></a></TMPL_IF>
+                        			
+                        			<a href="<TMPL_VAR NAME="URL">">
+                                    <img class="image-fluid" src="<TMPL_VAR NAME="CIMGWEEK">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">" />
+                        			</a>
+                        		</div>
+                        </TMPL_LOOP>
+                    </div>
+
+
+                    <div class="problem" id="unknown">
+                        <h5 class="mt-0 mb-1">Unknown</h5>
+                        <TMPL_LOOP NAME="UNKNOWN">
+                        		<div class="node">
+                        			<a class="nodetitle" href="<TMPL_VAR NAME="NODEURL">"><TMPL_VAR ESCAPE="HTML" NAME="NODENAME"></a> 
+
+                        			<TMPL_IF NAME="URL"><a href="<TMPL_VAR NAME="URL">"></TMPL_IF>
+                        			<TMPL_VAR ESCAPE="HTML" NAME="LABEL">
+                        			<TMPL_IF NAME="URL"></a></TMPL_IF>
+                        			
+                        			<a href="<TMPL_VAR NAME="URL">">
+                                    <img class="image-fluid" src="<TMPL_VAR NAME="CIMGDAY">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">" />
+                        			</a>
+                        		</div>
+    
+                        		<div class="node">
+                        			<a class="nodetitle" href="<TMPL_VAR NAME="NODEURL">"><TMPL_VAR ESCAPE="HTML" NAME="NODENAME"></a> 
+
+                        			<TMPL_IF NAME="URL"><a href="<TMPL_VAR NAME="URLX">"></TMPL_IF>
+                                <TMPL_VAR ESCAPE="HTML" NAME="LABEL">
+                        			<TMPL_IF NAME="URL"></a></TMPL_IF>
+
+                        			<a href="<TMPL_VAR NAME="URL">">
+                                    <img class="image-fluid" src="<TMPL_VAR NAME="CIMGWEEK">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">" />
+                        			</a>
+                        		</div>
+                        </TMPL_LOOP>
+                    </div>
+
+        	        </article>
+	        </div>
+        </main>
+        <TMPL_INCLUDE NAME="partial/footer.tmpl">
+    </body>
+</html>
+
+

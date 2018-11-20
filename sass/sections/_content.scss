@@ -1,0 +1,70 @@
+article{
+    background: url(../../static/img/bg.svg);
+    background-color: $grey-light;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+	a{
+	    text-decoration: none;
+	}
+
+}
+
+.heading{
+    margin-bottom: 15px;
+}
+
+.view-node{
+    background-color: $white50;
+    border-left: 3px solid $dark;
+    padding: .5rem;
+}
+
+.view-node:hover{
+    background-color: $white;
+}
+
+.tab-content > .tab-pane{
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+8,ffffff+25,ffffff+100&1+0,0.8+8,0.5+25,0.15+100 */
+    background: -moz-linear-gradient(top, rgba($white,0.9) 0%, rgba($white,0.8) 8%, rgba($white,0.5) 25%, rgba($white,0.15) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba($white,0.9) 0%,rgba($white,0.8) 8%,rgba($white,0.5) 25%,rgba($white,0.15) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba($white,0.9) 0%,rgba($white,0.8) 8%,rgba($white,0.5) 25%,rgba($white,0.15) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$white', endColorstr='#26$white',GradientType=0 ); /* IE6-9 */
+    padding: .75rem;
+}
+
+ul#tabs{
+    background-color: $dark;
+    border-bottom: none;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+ul#tabs .nav-item{
+    border-right: 1px solid $white25;
+}
+
+.nav-tabs .nav-link{
+    background-color: transparent;
+    color: $white50;
+    border: none;
+}
+
+.nav-tabs .nav-link.active{
+    color: $dark;
+    background-color: $white;
+}
+
+.nav-tabs .nav-link:hover{
+    color: $white;
+}
+
+.nav-tabs .nav-link.active:hover{
+    color: $dark;
+}
+
+ul#tabs a.nav-link{
+    border-radius: 0;
+    text-transform: uppercase;
+}

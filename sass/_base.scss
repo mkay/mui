@@ -1,0 +1,81 @@
+/* global basic styles */
+
+html, body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+	display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 56px;
+}
+
+@media (max-width: 375px) {
+    body.overview aside{
+        display: none;
+    }
+}
+
+aside,
+article{
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+a{
+    color: $dark;
+    text-decoration: underline;
+}
+
+.btn-link:hover,
+.btn-link:active,
+.nav-link:hover,
+.nav-link:active,
+a:hover,
+a:active{
+    color: $primary;
+}
+
+main{
+    flex: 1;
+}
+
+img.crit{
+    outline: 5px solid $danger;
+}
+img.warn{
+    outline: 5px solid $warning;
+}
+
+table#legend{
+    font-size: .8rem;
+}
+
+ul.list-inline.list-small > li:not(:last-child):after{
+    content: "·";
+    margin-left: .5rem;
+}
+
+li.list-inline-item.host:after{
+    content: none !important;
+}
+
+ul.list-inline.list-small > ul {
+    list-style-type: decimal-leading-zero;
+}
+
+@media (min-width: 767px){
+    .list-small{
+        font-size: .9rem;
+        max-height: 200px;
+        overflow-y: scroll;
+    }
+    ul.list-inline.list-small > ul {
+        font-size: .8rem;
+    }
+}
+
+

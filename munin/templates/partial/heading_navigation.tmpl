@@ -1,0 +1,28 @@
+<span class="top-path">
+    <TMPL_IF NAME="PATH">
+        <TMPL_LOOP NAME="PATH">
+        <TMPL_IF NAME="PATHNAME"> 
+            <TMPL_IF NAME="PATH">
+                <a href="<TMPL_VAR NAME="PATH">">
+            <TMPL_ELSE>
+                <h2 class="node-heading mb-3">
+            </TMPL_IF> 
+           <TMPL_VAR NAME="PATHNAME">
+            <TMPL_IF NAME="PATH">
+                </a>
+            <TMPL_ELSE>
+                </h2>
+            </TMPL_IF>
+        <TMPL_ELSE>
+        <a href="<TMPL_VAR NAME="R_PATH">">
+            Home
+        </a>
+        </TMPL_IF>
+        
+        </TMPL_LOOP>
+    <TMPL_ELSE>
+        <a href="<TMPL_VAR NAME="R_PATH">">
+            Home
+        </a>
+    </TMPL_IF>
+</span>
