@@ -8,116 +8,116 @@
         	        </aside>
         	        <article class="col-md-7 col-lg-8 col-xl-9 col-content">
         	        
-                <TMPL_INCLUDE NAME="partial/heading_navigation.tmpl">
+                    <TMPL_INCLUDE NAME="partial/heading_navigation.tmpl">
 
-<TMPL_LOOP NAME="SERVICES">
-
-    <div class="row">
-        <div class="col-md-12 col-lg-6">
-            <div class="card-body">
-                <h5 class="card-title card-category"><TMPL_VAR NAME="NAME"> / Day</h5>
-            </div>
-            <div class="card mb-4 shadow-sm">
-                    <img data-title="<TMPL_VAR NAME="NAME"> / Day" data-href="<TMPL_VAR NAME="ZOOMDAY">" class="img-zoom card-img-top <TMPL_IF NAME="STATE_WARNING">warn</TMPL_IF><TMPL_IF NAME="STATE_CRITICAL">crit</TMPL_IF>" src="<TMPL_VAR NAME="IMGDAY">" alt="daily graph" />
-            </div>
-        </div>
-        <div class="col-md-12 col-lg-6">
-            <div class="card-body">
-                <h5 class="card-title card-category"><TMPL_VAR NAME="NAME"> / Week</h5>
-            </div>
-            <div class="card mb-4 shadow-sm">
-                    <img data-title="<TMPL_VAR NAME="NAME"> / Week" data-href="<TMPL_VAR NAME="ZOOMWEEK">" class="img-zoom card-img-top <TMPL_IF NAME="STATE_WARNING">warn</TMPL_IF><TMPL_IF NAME="STATE_CRITICAL">crit</TMPL_IF>" src="<TMPL_VAR NAME="IMGWEEK">" alt="weekly graph" />
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12 col-lg-6">
-            <div class="card-body">
-                <h5 class="card-title card-category"><TMPL_VAR NAME="NAME"> / Month</h5>
-            </div>
-            <div class="card mb-4 shadow-sm">
-                    <img data-title="<TMPL_VAR NAME="NAME"> / Month" data-href="<TMPL_VAR NAME="ZOOMMONTH">" class="img-zoom card-img-top <TMPL_IF NAME="STATE_WARNING">warn</TMPL_IF><TMPL_IF NAME="STATE_CRITICAL">crit</TMPL_IF>" src="<TMPL_VAR NAME="IMGMONTH">" alt="monthly graph" />
-            </div>
-        </div>
-        <div class="col-md-12 col-lg-6">
-            <div class="card-body">
-                <h5 class="card-title card-category"><TMPL_VAR NAME="NAME"> / Year</h5>
-            </div>
-            <div class="card mb-4 shadow-sm">
-                    <img data-title="<TMPL_VAR NAME="NAME"> / Year" data-href="<TMPL_VAR NAME="ZOOMYEAR">" class="img-zoom card-img-top <TMPL_IF NAME="STATE_WARNING">warn</TMPL_IF><TMPL_IF NAME="STATE_CRITICAL">crit</TMPL_IF>" src="<TMPL_VAR NAME="IMGYEAR">" alt="yearly graph" />
-            </div>
-        </div>
-    </div>
-    <!-- .sum graphs.  One of the least used features of munin? -->
-
-    <TMPL_IF NAME="IMGWEEKSUM">
-        <div class="row">
-            <div class="col-md-12 col-lg-6">
-                <div class="card-body">
-                    <h5 class="card-title card-category"><TMPL_VAR NAME="NAME"></h5>
-                </div>
-                <div class="card mb-4 shadow-sm">
-                    <img class="img-zoom card-img-top" src="<TMPL_VAR NAME="IMGWEEKSUM">" alt="summed weekly graph" />
-    	            </div>
-    	        </div> 
-    	    
-        	    <div class="col-md-12 col-lg-6">
-                <div class="card-body">
-                    <h5 class="card-title card-category"><TMPL_VAR NAME="NAME"></h5>
-                </div>
-                <div class="card mb-4 shadow-sm">
-                    <img class="img-zoom card-img-top" src="<TMPL_VAR NAME="IMGYEARSUM">" alt="summed yearly graph" />
-                </div>
-            </div>
-    	    </div>
-    	</div>
-    </TMPL_IF>
-
-<h4 class="mt-4 mb-0">Graph Information</h4>
-<TMPL_LOOP NAME="GRAPHINFO">
-<!-- Do we actually allow mutiple graph_info, or is this just to access the nested data? -->
-<small><TMPL_VAR NAME="info"></small>
-</TMPL_LOOP>
-
-<TMPL_IF NAME="STATE_WARNING"><p class="warning"><p><strong>Note:</strong> 
-This service is in WARNING state because one of the values reported is outside the allowed range.  Please see further down for information about the ranges and the graph for the values.
-</p></TMPL_IF>
-<TMPL_IF NAME="STATE_CRITICAL"><p class="critical"><p><strong>Note:</strong> 
-This service is in CRITICAL state because one of the values reported is outside the allowed range.  Please see further down for information about the ranges and the graph for the values.
-<p></TMPL_IF>
-<TMPL_IF NAME="STATE_UNKNOWN"><p class='unknown'><strong>Note:</strong> This service is in UNKNOWN state, because something bad happened.  Please check your network, the munin-node, and the plugin.
-</p></TMPL_IF>
-
-<div class="table-responsive">
-<table id="legend" class="table table-sm">
-<tr>
-	<th class="field">Field</th>
-	<th class="internal"><span title="For use in munin.conf">Internal name</span></th>
-	<th class="type"><a href="<TMPL_VAR ESCAPE="URL" NAME="R_PATH">/static/definitions.html#data_types">Type</a></th>
-	<th class="warn">Warn</th>
-	<th class="crit">Crit</th>
-	<th class="info">Info</th>
-</tr>
-<TMPL_LOOP NAME="FIELDINFO">
-<tr class="<TMPL_IF NAME="__odd__">oddrow<TMPL_ELSE>evenrow</TMPL_IF><TMPL_IF NAME="__last__"> lastrow</TMPL_IF">">
-	<td class="field"><TMPL_VAR ESCAPE="HTML" NAME="LABEL"></td>
-    <td class="internal"><span title="For use in munin.conf"><TMPL_VAR ESCAPE="HTML" NAME="FIELD"></span></td>
-    <td class="type"><TMPL_VAR NAME="TYPE"></td>
-    <td class="warn"><TMPL_IF NAME="STATE_WARNING"><div class='warntext'></TMPL_IF><TMPL_VAR NAME="WARN"><TMPL_IF NAME="STATE_WARNING"></div><TMPL_ELSE>&nbsp;</TMPL_IF></td>
-    <td class="info"><TMPL_IF NAME="STATE_CRITICAL"><div class='crittext'></TMPL_IF><TMPL_VAR NAME="CRIT"><TMPL_IF NAME="STATE_CRITICAL"></div><TMPL_ELSE>&nbsp;</TMPL_IF></td>
-    <td><TMPL_IF NAME="INFO"><TMPL_VAR ESCAPE="HTML" NAME="INFO"><TMPL_ELSE>&nbsp;</TMPL_IF></td>
-</tr>
-<TMPL_IF NAME="EXTINFO">
-<tr class="<TMPL_IF NAME="__odd__">oddrow<TMPL_ELSE>evenrow</TMPL_IF>">
-  <td class='wrap' colspan="6" align='left' valign='top'>
-    This field has the following extra information: <TMPL_VAR ESCAPE="HTML" NAME="EXTINFO">
-</td></tr>
-</TMPL_IF>
-</TMPL_LOOP>
-</table>
-</div>
-</TMPL_LOOP> <!-- services -->
+                    <TMPL_LOOP NAME="SERVICES">
+                    
+                        <div class="row">
+                            <div class="col-md-12 col-lg-6">
+                                <div class="card-body">
+                                    <h5 class="card-title card-category"><TMPL_VAR NAME="NAME"> / Day</h5>
+                                </div>
+                                <div class="card mb-4 shadow-sm">
+                                        <img data-title="<TMPL_VAR NAME="NAME"> / Day" data-href="<TMPL_VAR NAME="ZOOMDAY">" class="img-zoom card-img-top <TMPL_IF NAME="STATE_WARNING">warn</TMPL_IF><TMPL_IF NAME="STATE_CRITICAL">crit</TMPL_IF>" src="<TMPL_VAR NAME="IMGDAY">" alt="daily graph" />
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-6">
+                                <div class="card-body">
+                                    <h5 class="card-title card-category"><TMPL_VAR NAME="NAME"> / Week</h5>
+                                </div>
+                                <div class="card mb-4 shadow-sm">
+                                        <img data-title="<TMPL_VAR NAME="NAME"> / Week" data-href="<TMPL_VAR NAME="ZOOMWEEK">" class="img-zoom card-img-top <TMPL_IF NAME="STATE_WARNING">warn</TMPL_IF><TMPL_IF NAME="STATE_CRITICAL">crit</TMPL_IF>" src="<TMPL_VAR NAME="IMGWEEK">" alt="weekly graph" />
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="row">
+                            <div class="col-md-12 col-lg-6">
+                                <div class="card-body">
+                                    <h5 class="card-title card-category"><TMPL_VAR NAME="NAME"> / Month</h5>
+                                </div>
+                                <div class="card mb-4 shadow-sm">
+                                        <img data-title="<TMPL_VAR NAME="NAME"> / Month" data-href="<TMPL_VAR NAME="ZOOMMONTH">" class="img-zoom card-img-top <TMPL_IF NAME="STATE_WARNING">warn</TMPL_IF><TMPL_IF NAME="STATE_CRITICAL">crit</TMPL_IF>" src="<TMPL_VAR NAME="IMGMONTH">" alt="monthly graph" />
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-6">
+                                <div class="card-body">
+                                    <h5 class="card-title card-category"><TMPL_VAR NAME="NAME"> / Year</h5>
+                                </div>
+                                <div class="card mb-4 shadow-sm">
+                                        <img data-title="<TMPL_VAR NAME="NAME"> / Year" data-href="<TMPL_VAR NAME="ZOOMYEAR">" class="img-zoom card-img-top <TMPL_IF NAME="STATE_WARNING">warn</TMPL_IF><TMPL_IF NAME="STATE_CRITICAL">crit</TMPL_IF>" src="<TMPL_VAR NAME="IMGYEAR">" alt="yearly graph" />
+                                </div>
+                            </div>
+                        </div>
+                        <!-- .sum graphs.  One of the least used features of munin? -->
+                    
+                        <TMPL_IF NAME="IMGWEEKSUM">
+                            <div class="row">
+                                <div class="col-md-12 col-lg-6">
+                                    <div class="card-body">
+                                        <h5 class="card-title card-category"><TMPL_VAR NAME="NAME"></h5>
+                                    </div>
+                                    <div class="card mb-4 shadow-sm">
+                                        <img class="img-zoom card-img-top" src="<TMPL_VAR NAME="IMGWEEKSUM">" alt="summed weekly graph" />
+                        	            </div>
+                        	        </div> 
+                        	    
+                            	    <div class="col-md-12 col-lg-6">
+                                    <div class="card-body">
+                                        <h5 class="card-title card-category"><TMPL_VAR NAME="NAME"></h5>
+                                    </div>
+                                    <div class="card mb-4 shadow-sm">
+                                        <img class="img-zoom card-img-top" src="<TMPL_VAR NAME="IMGYEARSUM">" alt="summed yearly graph" />
+                                    </div>
+                                </div>
+                        	    </div>
+                        	</div>
+                        </TMPL_IF>
+                    
+                    <h4 class="mt-4 mb-0">Graph Information</h4>
+                    <TMPL_LOOP NAME="GRAPHINFO">
+                    <!-- Do we actually allow mutiple graph_info, or is this just to access the nested data? -->
+                    <small><TMPL_VAR NAME="info"></small>
+                    </TMPL_LOOP>
+                    
+                    <TMPL_IF NAME="STATE_WARNING"><p class="warning"><p><strong>Note:</strong> 
+                    This service is in WARNING state because one of the values reported is outside the allowed range.  Please see further down for information about the ranges and the graph for the values.
+                    </p></TMPL_IF>
+                    <TMPL_IF NAME="STATE_CRITICAL"><p class="critical"><p><strong>Note:</strong> 
+                    This service is in CRITICAL state because one of the values reported is outside the allowed range.  Please see further down for information about the ranges and the graph for the values.
+                    <p></TMPL_IF>
+                    <TMPL_IF NAME="STATE_UNKNOWN"><p class='unknown'><strong>Note:</strong> This service is in UNKNOWN state, because something bad happened.  Please check your network, the munin-node, and the plugin.
+                    </p></TMPL_IF>
+                    
+                    <div class="table-responsive">
+                    <table id="legend" class="table table-sm">
+                    <tr>
+                    	<th class="field">Field</th>
+                    	<th class="internal"><span title="For use in munin.conf">Internal name</span></th>
+                    	<th class="type"><a href="<TMPL_VAR ESCAPE="URL" NAME="R_PATH">/static/definitions.html#data_types">Type</a></th>
+                    	<th class="warn">Warn</th>
+                    	<th class="crit">Crit</th>
+                    	<th class="info">Info</th>
+                    </tr>
+                    <TMPL_LOOP NAME="FIELDINFO">
+                    <tr class="<TMPL_IF NAME="__odd__">oddrow<TMPL_ELSE>evenrow</TMPL_IF><TMPL_IF NAME="__last__"> lastrow</TMPL_IF">">
+                    	<td class="field"><TMPL_VAR ESCAPE="HTML" NAME="LABEL"></td>
+                        <td class="internal"><span title="For use in munin.conf"><TMPL_VAR ESCAPE="HTML" NAME="FIELD"></span></td>
+                        <td class="type"><TMPL_VAR NAME="TYPE"></td>
+                        <td class="warn"><TMPL_IF NAME="STATE_WARNING"><div class='warntext'></TMPL_IF><TMPL_VAR NAME="WARN"><TMPL_IF NAME="STATE_WARNING"></div><TMPL_ELSE>&nbsp;</TMPL_IF></td>
+                        <td class="info"><TMPL_IF NAME="STATE_CRITICAL"><div class='crittext'></TMPL_IF><TMPL_VAR NAME="CRIT"><TMPL_IF NAME="STATE_CRITICAL"></div><TMPL_ELSE>&nbsp;</TMPL_IF></td>
+                        <td><TMPL_IF NAME="INFO"><TMPL_VAR ESCAPE="HTML" NAME="INFO"><TMPL_ELSE>&nbsp;</TMPL_IF></td>
+                    </tr>
+                    <TMPL_IF NAME="EXTINFO">
+                    <tr class="<TMPL_IF NAME="__odd__">oddrow<TMPL_ELSE>evenrow</TMPL_IF>">
+                      <td class='wrap' colspan="6" align='left' valign='top'>
+                        This field has the following extra information: <TMPL_VAR ESCAPE="HTML" NAME="EXTINFO">
+                    </td></tr>
+                    </TMPL_IF>
+                    </TMPL_LOOP>
+                    </table>
+                    </div>
+                    </TMPL_LOOP> <!-- services -->
 
         	        </article>
 	        </div>
@@ -129,7 +129,7 @@ This service is in CRITICAL state because one of the values reported is outside 
         <div class="modal-dialog modal-dialog-centered" role="document">
             <form class="form-horizontal" role="form" name="zoom_form" id="zoom_form">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header pb-0">
                         <h5 id="plugin-title" class="modal-title"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -139,7 +139,7 @@ This service is in CRITICAL state because one of the values reported is outside 
                     <div class="modal-body mt-0 pb-0">
                         <div class="row bg-light">
                             <div class="col-md-6 py-2 px-5">
-                                <div class="text-primary">How to zoom:</div>
+                                <div class="text-primary"><i class="fas fa-mouse-pointer"></i> How to zoom:</div>
                                 <ol id="list-hints" class="list-small mb-0 pl-3">
                                     <li id="hint-start">Click the graph and <strong>select the start</strong> of the zoom <i class="fas fa-check check"></i></li>
                                     <li id="hint-stop" class="sr-only">Click it again and <strong>select the end</strong> of the zoom <i class="fas fa-check check"></i></li>
@@ -209,10 +209,9 @@ This service is in CRITICAL state because one of the values reported is outside 
         $('#zoom-do, #reset-do').click(function(e) { 
             // reset hints
             $('#list-hints li').removeClass('done');
-            $('#hint-stop, #hint-zoom').addClass(' sr-only');
+            $('#hint-stop, #hint-zoom').addClass('sr-only');
             // $('#img-overlay').addClass('hidden');
         });
-      
     </script>
 </body>
 </html>

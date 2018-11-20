@@ -4,9 +4,11 @@ a responsive Munin 2.x UI template based on [Bootstrap 4](http://getbootstrap.co
 ### Installation
 
 - backup the ``templates`` and ``static`` directories in your [Munin](http://munin-monitoring.org/) installation.
-- replace them with ``templates`` and ``static`` from this repo.
+- replace them with ``templates`` and ``static`` from this repo (``/munin/..``).
 - wait for the next munin-cron cycle.
-- browse to your Munin frontend. 
+- browse to your Munin frontend and expect to see sometjhing like this:
+
+![](screenshot.png)
 
 
 ### Credits
@@ -22,5 +24,5 @@ http://munin-monitoring.org/
 
 
 ### Disclaimer
-- I myself only monitor a handful of machines so let me know how this template works out on larger installations.
+- I myself only monitor a handful of machines so let me know how this template workson larger installations.
 
