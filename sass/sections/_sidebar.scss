@@ -39,12 +39,29 @@ aside ul li a{
     text-decoration: none;
 }
 
-aside a:hover{
-    color: #fff;
+aside a:hover,
+aside a:active,
+aside .btn-link:hover,
+aside .btn-link:active{
+    color: $white;
     text-decoration: none;
 }
 
 aside a,
 aside .btn{
-    color: rgba(255,255,255,.75);
+    color: $white75;
+}
+
+aside a:hover,
+aside a:active{
+    color: $white;
+}
+
+aside .link-host{
+    color: $white25;
+    display: inline-block;
+    font-size: .75rem;
+    line-height: 1.75rem;
+    margin-left: 1.25rem;
+    float: right;
 }

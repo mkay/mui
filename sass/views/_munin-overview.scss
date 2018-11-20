@@ -1,5 +1,11 @@
+@media (max-width: 375px) {
+    body.overview aside{ /* we don't that here */
+        display: none;
+    }
+}
+
 a.compare-link:not(:last-child) {
-    border-right: 1px solid #ccc;
+    border-right: 1px solid $grey-med;
     padding-right: .5rem;
     padding-left: .25rem;
 }

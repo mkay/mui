@@ -32,23 +32,23 @@ nav a:hover,
 
 .dropdown-menu a,
 .dropdown-menu .category{
-    color: rgba(255,255,255,.75);
+    color: $white75;
 }
 
 .dropdown-menu .value .badge-light {
-    background-color: rgba(255,255,255,.75);
+    background-color: $white75;
 }
 
 .dropdown-item:focus, .dropdown-item:hover{
     color: #16181b;
     text-decoration: none;
-    background-color: rgba(255,255,255,.75);
+    background-color: $white25;
 }
 
 .dropdown-item:focus .category a, .dropdown-item:hover .category a{
-    color: #16181b !important;
+    color: $dark !important;
 }
 
 .timestamp{
-    color: rgba(255,255,255,.5);
+    color: $white50;
 }

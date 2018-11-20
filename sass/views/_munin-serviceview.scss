@@ -8,7 +8,7 @@
 #zoom .modal-header,
 #zoom .modal-body,
 #zoom .modal-footer{
-    background-color: #efefef;
+    background-color: $grey-light;
 }
 
 #hint-start .check,
@@ -18,13 +18,13 @@
 
 #hint-start.done .check,
 #hint-stop.done .check{
-    color: #ccc;
+    color: $grey-med;
     display: inline-block;
 }
 
 #hint-start.done,
 #hint-stop.done{
-    color: #ccc !important;
+    color: $grey-med !important;
 }
 
 #zoom-do:focus,

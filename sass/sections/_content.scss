@@ -68,3 +68,19 @@ ul#tabs a.nav-link{
     border-radius: 0;
     text-transform: uppercase;
 }
+
+.card-title.card-category{
+    margin-bottom: 0;
+    text-transform: capitalize;
+}
+
+@media only screen and (max-width: 575px){
+    .card-title.card-category{
+        font-size: 1rem;
+    }
+}
+
+.card-img{
+    border-radius: 0;
+}
+
