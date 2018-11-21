@@ -24,5 +24,5 @@ http://munin-monitoring.org/
 
 
 ### Disclaimer
-- I myself only monitor a handful of machines so let me know how this template workson larger installations.
+- I myself only monitor a handful of machines so let me know how this template works on larger installations.
 
