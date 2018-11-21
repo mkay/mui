@@ -1,11 +1,5 @@
 /* http://getbootstrap.com/docs/4.1/examples/offcanvas/ */
-
-html,
-body {
-    overflow-x: hidden; /* Prevent scroll on narrow devices */
-}
-
-@media (max-width: 767px) {
+@media (max-width: 767px){
     .offcanvas-collapse {
         position: fixed;
         top: 56px; /* Height of navbar */

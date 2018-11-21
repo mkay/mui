@@ -1,6 +1,9 @@
-/*
-	http://getbootstrap.com/docs/4.1/examples/offcanvas/
-*/
+// @codekit-prepend "material-scrolltop.js";
+
+/*----------  https://github.com/bartholomej/material-scrolltop  ----------*/
+$('body').materialScrollTop();
+
+/*----------  http://getbootstrap.com/docs/4.1/examples/offcanvas/  ----------*/
 $(function () {
 	'use strict'
 	$('[data-toggle="offcanvas"]').on('click', function () {
@@ -8,9 +11,7 @@ $(function () {
 	})
 })
 
-/*
-    onload: open tab from anchor #hash
-*/
+/*----------  onload: open tab from anchor #hash  ----------*/
 var current = location.protocol+'//'+location.host+location.pathname;   // current URL (without #hash)
 var hash = location.hash;                                               // just the #hash
 var prefix = "tab_";
@@ -19,9 +20,7 @@ if (hash) {
     window.location.hash = "";                                              // don't scroll to anchor
 }
 
-/*
-    onclick in sidebar: open tab from anchor #hash
-*/
+/*----------  onclick in sidebar: open tab from anchor #hash   ----------*/
 $('.sidebar-categories a').click(function(e) {
     var split = $(this).attr("href").split("#");    // split the href at #
     var base = split[0];
@@ -32,14 +31,9 @@ $('.sidebar-categories a').click(function(e) {
         $('#tabs a[href="#'+anchor+'"]').tab('show');
         e.preventDefault();
     }
-
-    //console.log('base: ' + base);
-    //console.log('ret: ' + ret);
-    //console.log('current: ' + current);
 });
 
 $(function(){
-
     /*----------  Smooth anchor scrolling  ----------*/
     $('a.scroll').bind('click', function(event) {
         var $anchor = $(this);
@@ -48,5 +42,4 @@ $(function(){
         }, 1200, 'easeInOutExpo');
         event.preventDefault();
     });
-
 });
