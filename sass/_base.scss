@@ -50,10 +50,13 @@ h1,h2,h3,h4,h5,h6{
 }
 
 img.crit{
-    outline: 5px solid $danger;
+    outline: 3px solid $danger;
 }
 img.warn{
-    outline: 5px solid $warning;
+    outline: 3px solid $warning;
+}
+img.unknown{
+    outline: 3px solid $unknown;
 }
 
 table#legend{

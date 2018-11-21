@@ -1,5 +1,5 @@
 aside .card-group{
-    background-color: rgba(0,0,0,.1);
+    background-color: rgba(0,0,0,.1) !important;
     border: none;
 }
 
@@ -63,6 +63,9 @@ aside .btn{
 aside a:hover,
 aside a:active{
     color: $white;
+}
+aside .sidebar-categories{
+    text-transform: capitalize;
 }
 
 aside .link-host{

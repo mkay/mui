@@ -10,95 +10,134 @@
 
                     <h2 class="node-heading mb-3">Problems</h2>
 
-                    <div class="problem" id="critical">
-                        <h5 class="mt-0 mb-1">Critical</h5>
+                    <TMPL_IF NAME="CRITICAL">
+                    <div class="problem mt-4" id="critical">
+                        <h5 class="mt-0 mb-1 bg-danger text-light py-1 px-3 shadow-sm"><i class="fas fa-fw fa-exclamation-triangle"></i> Critical</h5>
                         <TMPL_LOOP NAME="CRITICAL">
-                        		<div class="node">
-                        			<a class="nodetitle" href="<TMPL_VAR NAME="NODEURL">"><TMPL_VAR ESCAPE="HTML" NAME="NODENAME"></a> 
-
-                                <TMPL_IF NAME="URL"><a href="<TMPL_VAR NAME="URL">"></TMPL_IF>
-                        			<TMPL_VAR ESCAPE="HTML" NAME="LABEL">
-                        			<TMPL_IF NAME="URL"></a></TMPL_IF>
-
-                        			<a href="<TMPL_VAR NAME="URL">">
-                                    <img class="image-fluid" src="<TMPL_VAR NAME="CIMGDAY">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">" />
-                        			</a>
-                        		</div>
-    
-                        		<div class="node">
-                        			<a class="nodetitle" href="<TMPL_VAR NAME="NODEURL">"><TMPL_VAR ESCAPE="HTML" NAME="NODENAME"></a> 
-                        			
-                        			<TMPL_IF NAME="URL"><a href="<TMPL_VAR NAME="URLX">"></TMPL_IF>
-                                <TMPL_VAR ESCAPE="HTML" NAME="LABEL">
-                        			<TMPL_IF NAME="URL"></a></TMPL_IF>
-                        			
-                        			<a href="<TMPL_VAR NAME="URL">">
-                                    <img class="image-fluid" src="<TMPL_VAR NAME="CIMGWEEK">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">" />
-                        			</a>
-                        		</div>
+                        <div class="row mt-3 px-3">
+                            <div class="col-sm-12">
+                                <h5 class="card-title card-category"><a class="nodetitle nt" href="<TMPL_VAR NAME="NODEURL">"><TMPL_VAR ESCAPE="HTML" NAME="NODENAME"></a></h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-lg-6">
+                                <div class="card-body pt-1">
+                            			<TMPL_IF NAME="URL"><a href="<TMPL_VAR NAME="URL">"></TMPL_IF>
+                            			<TMPL_VAR ESCAPE="HTML" NAME="LABEL"> / Day
+                            			<TMPL_IF NAME="URL"></a></TMPL_IF>
+                                </div>                          
+                                <div class="card mb-4 shadow-sm">
+                                    <TMPL_IF NAME="URL"><a href="<TMPL_VAR NAME="URL">"></TMPL_IF>
+                                        <img class="card-img-top crit" src="<TMPL_VAR NAME="CIMGDAY">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">" />
+                                    <TMPL_IF NAME="URL"></a></TMPL_IF>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-6">
+                                <div class="card-body pt-1">
+                            			<TMPL_IF NAME="URL"><a href="<TMPL_VAR NAME="URL">"></TMPL_IF>
+                            			<TMPL_VAR ESCAPE="HTML" NAME="LABEL"> / Week
+                            			<TMPL_IF NAME="URL"></a></TMPL_IF>
+                                </div>
+                                <div class="card mb-4 shadow-sm">
+                                    <TMPL_IF NAME="URL"><a href="<TMPL_VAR NAME="URL">"></TMPL_IF>
+                                        <img class="card-img-top crit" src="<TMPL_VAR NAME="CIMGWEEK">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">" />
+                                    <TMPL_IF NAME="URL"></a></TMPL_IF>
+                                </div>
+                            </div>
+                        </div>
                         </TMPL_LOOP>
                     </div>
+                    <TMPL_ELSE>
+                    <div class="problem mt-4" id="critical">
+                        <h5 class="mt-0 mb-1 bg-light text-dark py-1 px-3 shadow-sm"><i class="fas fa-fw fa-exclamation-triangle"></i> No critical problems</h5>
+                    </div>
+                    </TMPL_IF>
 
-
-                    <div class="problem" id="warning">
-                        <h5 class="mt-0 mb-1">Warning</h5>
+                    <TMPL_IF NAME="WARNING">
+                    <div class="problem mt-4" id="warning">
+                        <h5 class="mt-0 mb-1 bg-warning py-1 px-3 shadow-sm"><i class="fas fa-fw fa-bell"></i> Warnings</h5>
                         <TMPL_LOOP NAME="WARNING">
-                        		<div class="node">
-                        			<a class="nodetitle" href="<TMPL_VAR NAME="NODEURL">"><TMPL_VAR ESCAPE="HTML" NAME="NODENAME"></a> 
-
-                        			<TMPL_IF NAME="URL"><a href="<TMPL_VAR NAME="URL">"></TMPL_IF>
-                        			<TMPL_VAR ESCAPE="HTML" NAME="LABEL">
-                        			<TMPL_IF NAME="URL"></a></TMPL_IF>
-
-                        			<a href="<TMPL_VAR NAME="URL">">
-                                    <img class="image-fluid" src="<TMPL_VAR NAME="CIMGDAY">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">" />
-                        			</a>
-                        		</div>
-                        		</td>
-                        		<td>
-                        		<div class="node">
-                        			<a class="nodetitle" href="<TMPL_VAR NAME="NODEURL">"><TMPL_VAR ESCAPE="HTML" NAME="NODENAME"></a> 
-
-                        			<TMPL_IF NAME="URL"><a href="<TMPL_VAR NAME="URLX">"></TMPL_IF>
-                        			<TMPL_VAR ESCAPE="HTML" NAME="LABEL">
-                        			<TMPL_IF NAME="URL"></a></TMPL_IF>
-                        			
-                        			<a href="<TMPL_VAR NAME="URL">">
-                                    <img class="image-fluid" src="<TMPL_VAR NAME="CIMGWEEK">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">" />
-                        			</a>
-                        		</div>
+                        <div class="row mt-3 px-3">
+                            <div class="col-sm-12">
+                                <h5 class="card-title card-category"><a class="nodetitle nt" href="<TMPL_VAR NAME="NODEURL">"><TMPL_VAR ESCAPE="HTML" NAME="NODENAME"></a></h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-lg-6">
+                                <div class="card-body pt-1">
+                            			<TMPL_IF NAME="URL"><a href="<TMPL_VAR NAME="URL">"></TMPL_IF>
+                            			<TMPL_VAR ESCAPE="HTML" NAME="LABEL"> / Day
+                            			<TMPL_IF NAME="URL"></a></TMPL_IF>
+                                </div>                          
+                                <div class="card mb-4 shadow-sm">
+                                    <TMPL_IF NAME="URL"><a href="<TMPL_VAR NAME="URL">"></TMPL_IF>
+                                        <img class="card-img-top warn" src="<TMPL_VAR NAME="CIMGDAY">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">" />
+                                    <TMPL_IF NAME="URL"></a></TMPL_IF>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-6">
+                                <div class="card-body pt-1">
+                            			<TMPL_IF NAME="URL"><a href="<TMPL_VAR NAME="URL">"></TMPL_IF>
+                            			<TMPL_VAR ESCAPE="HTML" NAME="LABEL"> / Week
+                            			<TMPL_IF NAME="URL"></a></TMPL_IF>
+                                </div>
+                                <div class="card mb-4 shadow-sm">
+                                    <TMPL_IF NAME="URL"><a href="<TMPL_VAR NAME="URL">"></TMPL_IF>
+                                        <img class="card-img-top warn" src="<TMPL_VAR NAME="CIMGWEEK">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">" />
+                                    <TMPL_IF NAME="URL"></a></TMPL_IF>
+                                </div>
+                            </div>
+                        </div>
                         </TMPL_LOOP>
                     </div>
+                    <TMPL_ELSE>
+                    <div class="problem mt-4" id="warning">
+                        <h5 class="mt-0 mb-1 bg-light text-dark py-1 px-3 shadow-sm"><i class="fas fa-fw fa-bell"></i> No warnings</h5>
+                    </div>
+                    </TMPL_IF>
 
-
-                    <div class="problem" id="unknown">
-                        <h5 class="mt-0 mb-1">Unknown</h5>
+                    <TMPL_IF NAME="UNKNOWN">
+                    <div class="problem mt-4" id="unknown">
+                        <h5 class="mt-0 mb-1 bg-info text-light py-1 px-3 shadow-sm"><i class="fas fa-question-circle"></i> Unknown</h5>
                         <TMPL_LOOP NAME="UNKNOWN">
-                        		<div class="node">
-                        			<a class="nodetitle" href="<TMPL_VAR NAME="NODEURL">"><TMPL_VAR ESCAPE="HTML" NAME="NODENAME"></a> 
-
-                        			<TMPL_IF NAME="URL"><a href="<TMPL_VAR NAME="URL">"></TMPL_IF>
-                        			<TMPL_VAR ESCAPE="HTML" NAME="LABEL">
-                        			<TMPL_IF NAME="URL"></a></TMPL_IF>
-                        			
-                        			<a href="<TMPL_VAR NAME="URL">">
-                                    <img class="image-fluid" src="<TMPL_VAR NAME="CIMGDAY">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">" />
-                        			</a>
-                        		</div>
-    
-                        		<div class="node">
-                        			<a class="nodetitle" href="<TMPL_VAR NAME="NODEURL">"><TMPL_VAR ESCAPE="HTML" NAME="NODENAME"></a> 
-
-                        			<TMPL_IF NAME="URL"><a href="<TMPL_VAR NAME="URLX">"></TMPL_IF>
-                                <TMPL_VAR ESCAPE="HTML" NAME="LABEL">
-                        			<TMPL_IF NAME="URL"></a></TMPL_IF>
-
-                        			<a href="<TMPL_VAR NAME="URL">">
-                                    <img class="image-fluid" src="<TMPL_VAR NAME="CIMGWEEK">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">" />
-                        			</a>
-                        		</div>
+                        <div class="row mt-3 px-3">
+                            <div class="col-sm-12">
+                                <h5 class="card-title card-category"><a class="nodetitle nt" href="<TMPL_VAR NAME="NODEURL">"><TMPL_VAR ESCAPE="HTML" NAME="NODENAME"></a></h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-lg-6">
+                                <div class="card-body pt-1">
+                            			<TMPL_IF NAME="URL"><a href="<TMPL_VAR NAME="URL">"></TMPL_IF>
+                            			<TMPL_VAR ESCAPE="HTML" NAME="LABEL"> / Day
+                            			<TMPL_IF NAME="URL"></a></TMPL_IF>
+                                </div>                          
+                                <div class="card mb-4 shadow-sm">
+                                    <TMPL_IF NAME="URL"><a href="<TMPL_VAR NAME="URL">"></TMPL_IF>
+                                        <img class="card-img-top unknown" src="<TMPL_VAR NAME="CIMGDAY">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">" />
+                                    <TMPL_IF NAME="URL"></a></TMPL_IF>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-6">
+                                <div class="card-body pt-1">
+                            			<TMPL_IF NAME="URL"><a href="<TMPL_VAR NAME="URL">"></TMPL_IF>
+                            			<TMPL_VAR ESCAPE="HTML" NAME="LABEL"> / Week
+                            			<TMPL_IF NAME="URL"></a></TMPL_IF>
+                                </div>
+                                <div class="card mb-4 shadow-sm">
+                                    <TMPL_IF NAME="URL"><a href="<TMPL_VAR NAME="URL">"></TMPL_IF>
+                                        <img class="card-img-top unknown" src="<TMPL_VAR NAME="CIMGWEEK">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">" />
+                                    <TMPL_IF NAME="URL"></a></TMPL_IF>
+                                </div>
+                            </div>
+                        </div>
                         </TMPL_LOOP>
                     </div>
+                    <TMPL_ELSE>
+                    <div class="problem mt-4" id="unknown">
+                        <h5 class="mt-0 mb-1 bg-light text-dark py-1 px-3 shadow-sm"><i class="fas fa-fw fa-question-circle"></i> No unknown problems</h5>
+                    </div>
+                    </TMPL_IF>
 
         	        </article>
 	        </div>
