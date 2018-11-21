@@ -1,55 +1,56 @@
 <TMPL_INCLUDE NAME="partial/head.tmpl">
-<body>
-<TMPL_INCLUDE NAME="partial/logo_navigation.tmpl">
-<div id="main" class="categoryview">
-<TMPL_INCLUDE NAME="partial/navigation.tmpl">
-<div id="content">
-<h2>Category: <TMPL_VAR ESCAPE="HTML" NAME="CATEGORY"></h2>
-<TMPL_LOOP NAME="SERVICES">
-<div class="service">
-	<h3 id="<TMPL_VAR ESCAPE="HTML" NAME="name">"><TMPL_VAR ESCAPE="HTML" NAME="NAME"></h3>
-	<TMPL_LOOP NAME="GRAPHS">
-		<div class="node">
-		<span class="nodetitle"><a href="<TMPL_VAR NAME="HOST_URL">">
-			<TMPL_VAR ESCAPE="HTML" NAME="NODENAME"></a> :: <TMPL_IF NAME="URLX">
-				<a <TMPL_IF NAME="STATE_WARNING">class="warn"</TMPL_IF>
-				 <TMPL_IF NAME="STATE_CRITICAL">class="crit"</TMPL_IF> href="<TMPL_VAR NAME="URLX">">
-				</TMPL_IF>
-				<TMPL_VAR ESCAPE="HTML" NAME="LABEL">
-				<TMPL_IF NAME="URLX"></a></TMPL_IF>
-		</span><br />
-        <a href="<TMPL_VAR NAME="URLX">">
-            <TMPL_IF NAME="TIMEDAY">
-              <img src="<TMPL_VAR NAME="CIMGDAY">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">"
-		class="i<TMPL_IF NAME="STATE_WARNING">warn</TMPL_IF><TMPL_IF NAME="STATE_CRITICAL">crit</TMPL_IF>"
-               <TMPL_IF NAME="IMGDAYWIDTH">width="<TMPL_VAR NAME="IMGDAYWIDTH">" </TMPL_IF>
-               <TMPL_IF NAME="IMGDAYHEIGHT">height="<TMPL_VAR NAME="IMGDAYHEIGHT">"</TMPL_IF>/>
-            </TMPL_IF>
-            <TMPL_IF NAME="TIMEWEEK">
-              <img src="<TMPL_VAR NAME="CIMGWEEK">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">"
-		class="i<TMPL_IF NAME="STATE_WARNING">warn</TMPL_IF><TMPL_IF NAME="STATE_CRITICAL">crit</TMPL_IF>"
-               <TMPL_IF NAME="IMGWEEKWIDTH">width="<TMPL_VAR NAME="IMGWEEKWIDTH">" </TMPL_IF>
-               <TMPL_IF NAME="IMGWEEKHEIGHT">height="<TMPL_VAR NAME="IMGWEEKHEIGHT">"</TMPL_IF>/>
-            </TMPL_IF>
-            <TMPL_IF NAME="TIMEMONTH">
-              <img src="<TMPL_VAR NAME="CIMGMONTH">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">"
-		class="i<TMPL_IF NAME="STATE_WARNING">warn</TMPL_IF><TMPL_IF NAME="STATE_CRITICAL">crit</TMPL_IF>"
-               <TMPL_IF NAME="IMGMONTHWIDTH">width="<TMPL_VAR NAME="IMGMONTHWIDTH">" </TMPL_IF>
-               <TMPL_IF NAME="IMGMONTHHEIGHT">height="<TMPL_VAR NAME="IMGMONTHHEIGHT">"</TMPL_IF>/>
-            </TMPL_IF>
-            <TMPL_IF NAME="TIMEYEAR">
-              <img src="<TMPL_VAR NAME="CIMGYEAR">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">"
-		class="i<TMPL_IF NAME="STATE_WARNING">warn</TMPL_IF><TMPL_IF NAME="STATE_CRITICAL">crit</TMPL_IF>"
-               <TMPL_IF NAME="IMGYEARWIDTH">width="<TMPL_VAR NAME="IMGYEARWIDTH">" </TMPL_IF>
-               <TMPL_IF NAME="IMGYEARHEIGHT">height="<TMPL_VAR NAME="IMGYEARHEIGHT">"</TMPL_IF>/>
-            </TMPL_IF>
-        </a>
-		</div>
-	</TMPL_LOOP>
-</div>
-</TMPL_LOOP>
-</div>
-</div>
-<TMPL_INCLUDE NAME="partial/footer.tmpl">
+    <body>
+        <TMPL_INCLUDE NAME="partial/navigation.tmpl">
+        <main class="container-fluid">
+        	    <div class="row h-100">
+        	        <aside class="d-none d-md-block col-md-5 col-lg-4 col-xl-3 bg-dark text-light">
+        	            <TMPL_INCLUDE NAME="partial/sidebar.tmpl">
+        	        </aside>
+        	        <article class="col-md-7 col-lg-8 col-xl-9 col-content">
+
+                    <h2 class="ctc"><TMPL_VAR ESCAPE="HTML" NAME="CATEGORY"></h2>
+                    
+                    
+                    <TMPL_LOOP NAME="SERVICES">
+                    <div class="row row-group">
+                        <div class="col-sm-12">
+                            <h3 class="mt-4 mb-1 ctc"><TMPL_VAR ESCAPE="HTML" NAME="NAME"> / per <TMPL_IF NAME="TIMEDAY">Day</TMPL_IF><TMPL_IF NAME="TIMEWEEK">Week</TMPL_IF><TMPL_IF NAME="TIMEMONTH">Month</TMPL_IF><TMPL_IF NAME="TIMEYEAR">Year</TMPL_IF></h3>
+                        </div>
+                        
+                        <TMPL_LOOP NAME="GRAPHS">
+                        <div class="col-md-12 col-lg-6">
+                            <div class="card-body">
+                                <h5 class="card-title card-category nt"><a href="<TMPL_VAR NAME="HOST_URL">"><TMPL_VAR ESCAPE="HTML" NAME="NODENAME"></a></h5>
+                            </div>
+                        
+                            <div class="card mb-4 shadow-sm">
+                                <a href="<TMPL_VAR NAME="URLX">">
+                                    <TMPL_IF NAME="TIMEDAY">
+                                    <img class="card-img-top <TMPL_IF NAME="STATE_WARNING">warn</TMPL_IF><TMPL_IF NAME="STATE_CRITICAL">crit</TMPL_IF>" src="<TMPL_VAR NAME="CIMGDAY">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">" />
+                                    </TMPL_IF>
+                                    
+                                    <TMPL_IF NAME="TIMEWEEK">
+                                    <img class="card-img-top <TMPL_IF NAME="STATE_WARNING">warn</TMPL_IF><TMPL_IF NAME="STATE_CRITICAL">crit</TMPL_IF>"  src="<TMPL_VAR NAME="CIMGWEEK">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">" />
+                                    </TMPL_IF>
+                                    
+                                    <TMPL_IF NAME="TIMEMONTH">
+                                    <img class="card-img-top <TMPL_IF NAME="STATE_WARNING">warn</TMPL_IF><TMPL_IF NAME="STATE_CRITICAL">crit</TMPL_IF>"  src="<TMPL_VAR NAME="CIMGMONTH">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">" />
+                                    </TMPL_IF>
+                                    
+                                    <TMPL_IF NAME="TIMEYEAR">
+                                    <img class="card-img-top <TMPL_IF NAME="STATE_WARNING">warn</TMPL_IF><TMPL_IF NAME="STATE_CRITICAL">crit</TMPL_IF>"  src="<TMPL_VAR NAME="CIMGYEAR">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">" />
+                                    </TMPL_IF>
+                                </a>
+                            </div>
+                        </div>
+                        </TMPL_LOOP>
+                                                   
+                    </div><!--.row-->
+                    </TMPL_LOOP>
+                    
+        	        </article>
+	        </div>
+        </main>
+        <TMPL_INCLUDE NAME="partial/footer.tmpl">
 </body>
 </html>

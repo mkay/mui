@@ -7,8 +7,15 @@ nav a:hover,
 
 @media (max-width: 767px){
     #navigation ul.navbar-main{
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         margin-top: 1rem;
+    }
+    #navigation ul.navbar-right{
+        font-size: 1.3rem;
+    }
+    .timestamp .nav-link > span{
+        display: block;
+        font-size: 1rem;
     }
 }
 
@@ -26,8 +33,8 @@ nav a:hover,
 }
 
 .dropdown-menu{
-    background-color: #343a40;
-    border-top: none;
+    background-color: $dark;
+    border: none;
 }
 
 .dropdown-menu a,
@@ -40,7 +47,7 @@ nav a:hover,
 }
 
 .dropdown-item:focus, .dropdown-item:hover{
-    color: #16181b;
+    color: $white;
     text-decoration: none;
     background-color: $white25;
 }

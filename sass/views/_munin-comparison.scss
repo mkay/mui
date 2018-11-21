@@ -1,0 +1,11 @@
+.row.row-group {
+    border-bottom: 6px solid #343a40;
+}
+.nav-categories a:hover,
+.nav-categories a:active{
+	background-color: $dark !important;
+	color: $white !important;
+}
+.compare-link.active{
+	color: $primary;
+}

@@ -39,17 +39,14 @@ $('.sidebar-categories a').click(function(e) {
 });
 
 $(function(){
+
     /*----------  Smooth anchor scrolling  ----------*/
     $('a.scroll').bind('click', function(event) {
         var $anchor = $(this);
         $('html, body').stop().animate({
-            scrollTop: $($anchor.attr('href')).offset().top - 80
-        }, 1000, 'easeInOutExpo');
+            scrollTop: $($anchor.attr('href')).offset().top - 50
+        }, 1200, 'easeInOutExpo');
         event.preventDefault();
     });
 
-    	$('.btn-host').click(function(e) {
-        	$('#accordion .card-group').removeClass('active');
-    		$(this).closest('.card-group').addClass('active');
-    	});
 });

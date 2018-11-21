@@ -1,42 +1,65 @@
 <TMPL_INCLUDE NAME="partial/head.tmpl">
-<body>
-<TMPL_INCLUDE NAME="partial/logo_navigation_comparison.tmpl">
-<div id="main" class="comparison">
-<div id="content">
-<h2>Comparison: year</h2>
-<TMPL_LOOP NAME="CATEGORIES">
-<h3 id="<TMPL_VAR ESCAPE="HTML" NAME="GROUPNAME">"><TMPL_VAR ESCAPE="HTML" NAME="GROUPNAME"></h3>
-<table>
-	<TMPL_LOOP NAME="SERVICES">
-	<tr>
-		<TMPL_LOOP NAME="NODES">
-		<td>
-		<div class="node">
-		<span class="nodetitle"><a href="<TMPL_VAR ESCAPE="URL" NAME="NODENAME">/index.html">
-			<TMPL_VAR ESCAPE="HTML" NAME="NODENAME"></a> :: <TMPL_IF NAME="URL1">
-				<a <TMPL_IF NAME="STATE_WARNING">class="warn"</TMPL_IF>
-				 <TMPL_IF NAME="STATE_CRITICAL">class="crit"</TMPL_IF> href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URL">">
-				</TMPL_IF>
-				<TMPL_VAR ESCAPE="HTML" NAME="LABEL">
-				<TMPL_IF NAME="URL1"></a></TMPL_IF>
-		</span><br />
-		<TMPL_IF NAME="CIMGDAY">
-			<a href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URL">">
-				<img src="<TMPL_VAR NAME="CIMGYEAR">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">" 
-				 class="i<TMPL_IF NAME="STATE_WARNING">warn</TMPL_IF><TMPL_IF NAME="STATE_CRITICAL">crit</TMPL_IF>"
-				 <TMPL_IF NAME="IMGYEARWIDTH">width="<TMPL_VAR NAME="IMGYEARWIDTH">" </TMPL_IF> 
-				 <TMPL_IF NAME="IMGYEARHEIGHT">height="<TMPL_VAR NAME="IMGYEARHEIGHT">"</TMPL_IF>/>
-			</a>
-		</TMPL_IF>
-		</div>
-		</td>
-		</TMPL_LOOP>
-	</tr>
-	</TMPL_LOOP>
-</table>
-</TMPL_LOOP>
-</div>
-</div>
-<TMPL_INCLUDE NAME="partial/footer.tmpl">
+    <body>
+        <TMPL_INCLUDE NAME="partial/navigation.tmpl">
+        <main class="container-fluid">
+        	    <div class="row h-100">
+        	        <aside class="d-none d-md-block col-md-5 col-lg-4 col-xl-3 bg-dark text-light">
+        	            <TMPL_INCLUDE NAME="partial/sidebar.tmpl">
+        	        </aside>
+        	        <article class="col-md-7 col-lg-8 col-xl-9 col-content">
+
+                    <h2 class="node-heading mb-3"><span class="nt"><TMPL_VAR ESCAPE="URL" NAME="NAME"></span> categories by year</h2>
+                    <a class="compare-link" href="<TMPL_VAR NAME="R_PATH">/<TMPL_LOOP NAME="PATH"><TMPL_IF NAME="pathname"><TMPL_VAR ESCAPE="URL" NAME="PATHNAME">/</TMPL_IF></TMPL_LOOP>comparison-day.html">Day</a> 
+                    <a class="compare-link" href="<TMPL_VAR NAME="R_PATH">/<TMPL_LOOP NAME="PATH"><TMPL_IF NAME="pathname"><TMPL_VAR ESCAPE="URL" NAME="PATHNAME">/</TMPL_IF></TMPL_LOOP>comparison-week.html">Week</a> 
+                    <a class="compare-link" href="<TMPL_VAR NAME="R_PATH">/<TMPL_LOOP NAME="PATH"><TMPL_IF NAME="pathname"><TMPL_VAR ESCAPE="URL" NAME="PATHNAME">/</TMPL_IF></TMPL_LOOP>comparison-month.html">Month</a> 
+                    <a class="compare-link active" href="<TMPL_VAR NAME="R_PATH">/<TMPL_LOOP NAME="PATH"><TMPL_IF NAME="pathname"><TMPL_VAR ESCAPE="URL" NAME="PATHNAME">/</TMPL_IF></TMPL_LOOP>comparison-year.html">Year</a>
+                    
+                    <nav class="nav nav-pills nav-fill nav-categories bg-light mt-3">
+                        <TMPL_LOOP NAME="CATEGORIES">
+                        <a class="category-link nav-item nav-link scroll" <TMPL_IF NAME="STATE_WARNING">class="warn"</TMPL_IF><TMPL_IF NAME="STATE_CRITICAL">class="crit"</TMPL_IF> href="#category-<TMPL_VAR NAME="__counter__">">
+                            <TMPL_VAR ESCAPE="HTML" NAME="GROUPNAME">
+                        </a> 
+                        </TMPL_LOOP>
+                    </nav>
+                    
+                    <TMPL_LOOP NAME="CATEGORIES">
+                    <h3 class="ctc mt-4" id="category-<TMPL_VAR NAME="__counter__">"><TMPL_VAR ESCAPE="HTML" NAME="GROUPNAME"></h3>
+
+                        	<TMPL_LOOP NAME="SERVICES">
+                        <div class="row row-group">
+                        		<TMPL_LOOP NAME="NODES">
+                        		
+                        		<TMPL_IF NAME="NODE">
+                            <div class="col-md-12 col-lg-6">
+                                <div class="card-body">
+                        		    <a href="<TMPL_VAR ESCAPE="URL" NAME="NODENAME">/index.html"><TMPL_VAR ESCAPE="HTML" NAME="NODENAME"></a>
+                            		: 
+                            		<TMPL_IF NAME="URL1">
+                            		<a <TMPL_IF NAME="STATE_WARNING">class="warn"</TMPL_IF><TMPL_IF NAME="STATE_CRITICAL">class="crit"</TMPL_IF> href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URL">">
+                                </TMPL_IF>
+                                    <TMPL_VAR ESCAPE="HTML" NAME="LABEL">
+                                <TMPL_IF NAME="URL1"></a></TMPL_IF>
+                                </div>
+
+                            		<div class="card mb-4 shadow-sm">
+                                		<TMPL_IF NAME="CIMGYEAR">
+                            			<a href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URL">">
+                            				<img class="card-img-top <TMPL_IF NAME="STATE_WARNING">warn</TMPL_IF><TMPL_IF NAME="STATE_CRITICAL">crit</TMPL_IF>" src="<TMPL_VAR NAME="CIMGYEAR">" alt="<TMPL_VAR ESCAPE="HTML" NAME="LABEL">" />
+                            			</a>
+                                		</TMPL_IF>
+                                </div> 
+                            </div>
+                            </TMPL_IF>
+
+                        		</TMPL_LOOP>
+                        </div>
+                        	</TMPL_LOOP>
+
+                    </TMPL_LOOP>
+
+        	        </article>
+	        </div>
+        </main>
+        <TMPL_INCLUDE NAME="partial/footer.tmpl">
 </body>
 </html>

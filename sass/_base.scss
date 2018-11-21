@@ -42,6 +42,13 @@ main{
     flex: 1;
 }
 
+h1,h2,h3,h4,h5,h6{
+    a:hover,
+    a:active{
+        text-decoration: none;
+    }
+}
+
 img.crit{
     outline: 5px solid $danger;
 }
@@ -77,4 +84,12 @@ ul.list-inline.list-small > ul {
     }
 }
 
-
+.nt{
+    text-transform: none !important;
+}
+.ctc{
+    text-transform: capitalize !important;
+}
+.na{
+    text-decoration: line-through !important;
+}
