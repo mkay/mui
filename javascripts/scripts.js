@@ -1,7 +1,12 @@
 // @codekit-prepend "material-scrolltop.js";
-
+//
 /*----------  https://github.com/bartholomej/material-scrolltop  ----------*/
 $('body').materialScrollTop();
+
+/*----------  https://github.com/tuupola/jquery_lazyload  ----------*/
+$(function () {
+    $("img.lazyload").lazyload();
+})
 
 /*----------  http://getbootstrap.com/docs/4.1/examples/offcanvas/  ----------*/
 $(function () {
